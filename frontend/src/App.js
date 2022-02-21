@@ -6,6 +6,9 @@ const Chat = ({messages,updateMessages,socket}) => {
     socket.on('message',msg => {
       updateMessages(msg)
     })
+    return()=>{
+      socket.off('message')
+    }
   }
   useEffect(msgUpdater,[socket,messages])
   return (
