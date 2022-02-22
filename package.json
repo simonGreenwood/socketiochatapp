@@ -4,28 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
-    "testclient": "nodemon testclient.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/simonGreenwood/socketiochatapp.git"
   },
-  "author": "simonGreenwood",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/simonGreenwood/socketiochatapp/issues"
   },
-  "homepage": "https://github.com/simonGreenwood/socketiochatapp#readme",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.17.3",
-    "socket.io": "^4.4.1",
-    "socket.io-client": "^4.4.1"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.15"
-  }
+  "homepage": "https://github.com/simonGreenwood/socketiochatapp#readme"
 }
