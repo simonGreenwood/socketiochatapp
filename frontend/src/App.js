@@ -2,6 +2,7 @@ import React, {useState,useEffect} from "react"
 import io from 'socket.io-client'
 
 const Chat = ({messages,updateMessages,socket}) => {
+  const [newMessage,setNewMessage] = useState('')
   const msgUpdater = () => {
     socket.on('message',msg => {
       updateMessages(msg)
@@ -13,7 +14,15 @@ const Chat = ({messages,updateMessages,socket}) => {
   useEffect(msgUpdater,[socket,messages])
   return (
     <div>
-      {messages.map(msg=>msg+" ")}
+      {messages.map(msg=><p>{msg}</p>)}
+      <form onSubmit={event => {
+        event.preventDefault()
+        socket.emit('message',newMessage)
+        setNewMessage('')
+      }}>
+        <input value={newMessage} onChange={event => setNewMessage(event.target.value)}/>
+        <button formAction="submit">SEND MSG</button>
+      </form>
     </div>
   )
 }
@@ -32,10 +41,7 @@ const App = () => {
   return (
     <div>
       <h1>Chat App</h1>
-      {socket ? <Chat messages={messages} updateMessages={updateMessages} socket={socket}/>:<p>Loading...</p>}
-      <button onClick={() => {
-        socket.emit('message','ButtonClicked')
-      }}>SEND MSG</button>
+      {socket ? <Chat messages={messages} updateMessages={updateMessages} socket={socket} />:<p>Loading...</p>}
     </div>
   );
 }
