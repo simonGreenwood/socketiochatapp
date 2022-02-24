@@ -6,9 +6,9 @@ const Chat = ({messages, updateMessages, updateOnline, online, socket, username}
     socket.on('message',(from,msg) => {
       updateMessages({from,msg})
     })
-    socket.on('online update',(online) => {
-      console.log('Online:',online)
-      updateOnline(online)
+    socket.on('online update',(o) => {
+      console.log('Online:',o)
+      updateOnline(o)
     })
     return()=>{
       socket.off('message')
@@ -62,8 +62,8 @@ const Chat = ({messages, updateMessages, updateOnline, online, socket, username}
         {online.map(user => <p>{user.name}</p>)}
       </div>
       <form onSubmit={event => handleSubmit(event)} style={bottomBar}>
-          <input value={newMessage} onChange={event=>setNewMessage(event.target.value)} style={{}}/>
-          <button style={{backgroundImage:`url(${Send})`}}></button>
+          <input value={newMessage} onChange={event=>setNewMessage(event.target.value)} style={{borderRadius:'10px',border:'0px',flexGrow:8,marginLeft:'0.5%',marginRight:'1%',paddingLeft:'10px',paddingRight:'10px'}}/>
+          <button style={{backgroundImage:`url(${Send})`,backgroundRepeat:'no-repeat',height:'38px',width:'38px', border:'0px',borderRadius:'10px',backgroundPosition:'center',marginRight:'2%',flexGrow:0.4}}></button>
       </form>
     </div>
   )
