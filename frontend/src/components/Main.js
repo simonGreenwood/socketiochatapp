@@ -12,7 +12,7 @@ const Main = ({username}) => {
     setOnline(onlineList)
   }
   const hook = () => {
-    const sock = io('localhost:3001')
+    const sock = io('localhost:3000')
     sock.emit('user connect',username)
     setSocket(sock)
   }
